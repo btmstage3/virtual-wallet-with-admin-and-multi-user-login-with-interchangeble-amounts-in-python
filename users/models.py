@@ -5,6 +5,9 @@ from django.db import models
 from django.shortcuts import redirect, render
 
 
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -49,18 +52,5 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
 
-def login_view(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-            else:
-                form.add_error(None, 'Invalid username or password')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
+
+

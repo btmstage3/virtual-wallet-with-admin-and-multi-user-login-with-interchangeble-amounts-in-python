@@ -32,6 +32,13 @@ def home(request):
     print('Home view accessed.')
     return render(request, 'home.html')
 
+from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView
+
+class CustomLoginView(LoginView):
+    template_name = 'myapp/login.html'
+    success_url = reverse_lazy('home')
+
 
 def redirect_to_login(request):
     if not request.user.is_authenticated:

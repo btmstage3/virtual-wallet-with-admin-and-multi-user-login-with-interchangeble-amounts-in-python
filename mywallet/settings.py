@@ -11,17 +11,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+AUTH_USER_MODEL = 'users.CustomUser'
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.staticfiles',
     'mywallet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    ]
+    'users',
+    'django.contrib.staticfiles',
+
+]
 
 
 MIDDLEWARE = [
@@ -37,7 +40,7 @@ MIDDLEWARE = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # default backend for username and password authentication
     'django.contrib.auth.backends.AllowAllUsersModelBackend',  # allows login for all users in the database
-    ]
+]
 
 
 ROOT_URLCONF = 'mywallet.urls'
@@ -65,13 +68,6 @@ TEMPLATES = [
     },
 ]
 
-
-
-
-
-
-
-
 WSGI_APPLICATION = 'mywallet.wsgi.application'
 
 # Database
@@ -85,9 +81,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-# settings.py
-
-
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
