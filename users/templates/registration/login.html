@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if form.errors %}
+      <div class="alert alert-danger">
+        {% for field, errors in form.errors.items %}
+          <strong>{{ field }}:</strong>
+          {% for error in errors %}
+            {{ error }}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Transaction List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Transaction Amount</th>
+                <th>Transaction Type</th>
+                <th>Transaction Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.get_type_display }}</td>
+                    <td>{{ transaction.created_at }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No transactions found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
