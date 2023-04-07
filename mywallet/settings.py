@@ -45,7 +45,14 @@ ROOT_URLCONF = 'mywallet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'users/templates')],
+        'DIRS': [
+                    os.path.join(BASE_DIR, 'users/templates'),
+                    os.path.join(BASE_DIR, 'templates', 'registration'),
+                    os.path.join(BASE_DIR, 'users/templates/registration'),
+                    os.path.join(BASE_DIR, 'users/templates'),
+                    os.path.join(BASE_DIR, 'transactions/templates'),
+                    os.path.join(BASE_DIR, 'transactions'),
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

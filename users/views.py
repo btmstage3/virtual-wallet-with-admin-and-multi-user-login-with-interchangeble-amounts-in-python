@@ -5,10 +5,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
 
-def home(request):
-    print('Home view accessed.')
-    return render(request, 'home.html')
-
 
 def login_view(request):
     print('Login view accessed.')
