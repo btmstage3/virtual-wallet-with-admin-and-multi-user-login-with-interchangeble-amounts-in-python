@@ -2,9 +2,12 @@ from django.urls import path
 
 from users import views
 
+app_name = 'users'
+
+from django.urls import path, include
+
 urlpatterns = [
-    path('', views.redirect_to_login, name='redirect_to_login'),
-    path('login/', views.login_view, name='login'),
-    path('home/', views.home, name='home'),
+    path('', include('mywallet.urls')), # include the URLs for the mywallet app
+    path('users/', include('users.urls')), # include the URLs for the users app
 
 ]
